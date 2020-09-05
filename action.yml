@@ -1,0 +1,44 @@
+name: 'MLflow Tracking'
+description: Get Runs From MLflow Tracking remote server
+author: Alex Spanos
+inputs:
+  MLFLOW_TRACKING_URI:
+    description: The tracking URI of your MLflow remote server, including username and password. Example "http://foo:bar@ec2-1-2-345-678.eu-west-2.compute.amazonaws.com".
+    required: true
+  EXPERIMENT_ID:
+    description: The MLflow experiment_id against which relevant runs were executed.
+    required: true
+  BASELINE_RUN_QUERY:
+    description: Baseline run query string for using in `mlflow.search_runs` `filter_string` param.
+    required: true
+  CANDIDATE_RUN_QUERY:
+    description: Candidate run query string for using in `mlflow.search_runs` `filter_string` param.
+    require: true
+outputs:
+  BOOL_COMPLETE:
+    description: True if both runs were fetched successfully.
+  EXPERIMENT_ID:
+    description: Queried MLflow experiment_id.
+  BASELINE_TRAIN_ACCURACY:
+    description: Training accuracy of baseline run.
+  BASELINE_TEST_ACCURACY:
+    description: Training accuracy of baseline run.
+  BASELINE_ARTIFACT_URI:
+    description: Artifact URI for baseline run.
+  CANDIDATE_TRAIN_ACCURACY:
+    description: Training accuracy of baseline run.
+  CANDIDATE_TEST_ACCURACY:
+    description: Training accuracy of baseline run.
+  CANDIDATE_ARTIFACT_URI:
+    description: Artifact URI for baseline run.
+branding:
+  color: 'yellow'
+  icon: 'bar-chart-2'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.MLFLOW_TRACKING_URI}}
+    - ${{ inputs.EXPERIMENT_ID}}
+    - ${{ inputs.BASELINE_RUN_QUERY}}
+    - ${{ inputs.CANDIDATE_RUN_QUERY}}
