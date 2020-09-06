@@ -19,6 +19,7 @@ candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
 mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
 mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 
+print("hello!")
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")
