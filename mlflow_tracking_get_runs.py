@@ -16,12 +16,18 @@ mlflow_tracking_uri = os.getenv("INPUT_MLFLOW_TRACKING_URI")
 experiment_id = os.getenv("INPUT_EXPERIMENT_ID")
 baseline_run_query = os.getenv("INPUT_BASELINE_RUN_QUERY")
 candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv(
+    "INPUT_MLFLOW_TRACKING_USERNAME"
+)
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv(
+    "INPUT_MLFLOW_TRACKING_PASSWORD"
+)
 
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")
-logging.debug(f"uname: {os.getenv('INPUT_MLFLOW_TRACKING_USERNAME')}")
-logging.debug(f"pswd: {os.getenv('INPUT_MLFLOW_TRACKING_PASSWORD')}")
+logging.debug(f"uname: {os.getenv('MLFLOW_TRACKING_USERNAME')}")
+logging.debug(f"pswd: {os.getenv('MLFLOW_TRACKING_PASSWORD')}")
 
 
 # Validate inputs
