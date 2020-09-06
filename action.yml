@@ -38,7 +38,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.MLFLOW_TRACKING_URI}}
-    - ${{ inputs.EXPERIMENT_ID}}
-    - ${{ inputs.BASELINE_RUN_QUERY}}
-    - ${{ inputs.CANDIDATE_RUN_QUERY}}
+    - ${{ inputs.MLFLOW_TRACKING_URI }}
+    - ${{ inputs.MLFLOW_TRACKING_USERNAME }}
+    - ${{ inputs.MLFLOW_TRACKING_PASSWORD }}
+    - ${{ inputs.EXPERIMENT_ID }}
+    - ${{ inputs.BASELINE_RUN_QUERY }}
+    - ${{ inputs.CANDIDATE_RUN_QUERY }}
