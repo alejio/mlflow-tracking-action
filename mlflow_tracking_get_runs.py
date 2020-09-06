@@ -7,16 +7,17 @@ The purpose is to compare a candidate run with a specified baseline run within a
 import os
 import mlflow
 import logging
-from typing import Any, Tuple
+from typing import Any, Tuple, Optional
 
 logging.root.setLevel(logging.DEBUG)
 
+for k, v in os.environ.items():
+    print(f"{k}={v}")
+
 # Read Inputs
 mlflow_tracking_uri = os.getenv("INPUT_MLFLOW_TRACKING_URI")
-if os.getenv("INPUT_MLFLOW_TRACKING_USERNAME"):
-    assert os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
-    mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
-    mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
+mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
+mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 experiment_id = os.getenv("INPUT_EXPERIMENT_ID")
 baseline_run_query = os.getenv("INPUT_BASELINE_RUN_QUERY")
 candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
@@ -35,8 +36,8 @@ assert isinstance(candidate_run_query, str), "run query must be a string"
 # Fetch the runs
 def fetch_runs(
     tracking_uri: str,
-    username: str,
-    password: str,
+    username: Optional[str],
+    password: Optional[str],
     experiment_id: str,
     baseline_query: str,
     candidate_query: str,
