@@ -9,10 +9,6 @@ import mlflow
 import logging
 from typing import Any, Tuple, Optional
 
-logging.root.setLevel(logging.DEBUG)
-
-for k, v in os.environ.items():
-    print(f"{k}={v}")
 
 # Read Inputs
 mlflow_tracking_uri = os.getenv("INPUT_MLFLOW_TRACKING_URI")
@@ -21,7 +17,10 @@ mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 experiment_id = os.getenv("INPUT_EXPERIMENT_ID")
 baseline_run_query = os.getenv("INPUT_BASELINE_RUN_QUERY")
 candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
+debug = os.getenv("INPUT_DEBUG")
 
+if debug:
+    logging.root.setLevel(logging.DEBUG)
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")

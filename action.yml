@@ -20,6 +20,10 @@ inputs:
   CANDIDATE_RUN_QUERY:
     description: Candidate run query string for using in `mlflow.search_runs` `filter_string` param.
     require: true
+  DEBUG:
+    description: Setting this variable to any value will turn debug mode on.
+    require: false
+    default: ""
 outputs:
   BOOL_COMPLETE:
     description: True if both runs were fetched successfully.
@@ -50,3 +54,4 @@ runs:
     - ${{ inputs.EXPERIMENT_ID }}
     - ${{ inputs.BASELINE_RUN_QUERY }}
     - ${{ inputs.CANDIDATE_RUN_QUERY }}
+    - ${{ inputs.DEBUG }}
