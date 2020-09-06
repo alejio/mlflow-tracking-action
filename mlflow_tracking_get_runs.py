@@ -58,6 +58,9 @@ def fetch_runs(
 
 
 # Fetch the runs
+mlflow.set_tracking_uri(mlflow_tracking_uri)
+os.environ["MLFLOW_TRACKING_USERNAME"] = mlflow_username
+os.environ["MLFLOW_TRACKING_PASSWORD"] = mlflow_password
 baseline_run, candidate_run = fetch_runs(
     mlflow_tracking_uri,
     mlflow_username,
