@@ -3,8 +3,14 @@ description: Get Runs From MLflow Tracking remote server
 author: Alex Spanos
 inputs:
   MLFLOW_TRACKING_URI:
-    description: The tracking URI of your MLflow remote server, including username and password. Example "http://foo:bar@ec2-1-2-345-678.eu-west-2.compute.amazonaws.com".
+    description: The tracking URI of your MLflow remote server, including username and password. Example "http://ec2-1-2-345-678.eu-west-2.compute.amazonaws.com".
     required: true
+  MLFLOW_TRACKING_USERNAME:
+    description: Username for MLflow server authentication.
+    required: false
+  MLFLOW_TRACKING_PASSWORD:
+    description: Password for MLflow server authentication.
+    required: false  
   EXPERIMENT_ID:
     description: The MLflow experiment_id against which relevant runs were executed.
     required: true
