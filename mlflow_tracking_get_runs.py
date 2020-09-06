@@ -13,13 +13,14 @@ logging.root.setLevel(logging.DEBUG)
 
 # Read Inputs
 mlflow_tracking_uri = os.getenv("INPUT_MLFLOW_TRACKING_URI")
+if os.getenv("INPUT_MLFLOW_TRACKING_USERNAME"):
+    assert os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
+    mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
+    mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 experiment_id = os.getenv("INPUT_EXPERIMENT_ID")
 baseline_run_query = os.getenv("INPUT_BASELINE_RUN_QUERY")
 candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
-mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
-mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 
-print("hello!")
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")
@@ -43,7 +44,6 @@ def fetch_runs(
     mlflow.set_tracking_uri(tracking_uri)
     os.environ["MLFLOW_TRACKING_USERNAME"] = username
     os.environ["MLFLOW_TRACKING_PASSWORD"] = password
-    print(os.getenv("MLFLOW_TRACKING_USERNAME"))
     baseline_run = mlflow.search_runs(
         experiment_ids=[experiment_id], filter_string=baseline_query
     )
@@ -58,9 +58,6 @@ def fetch_runs(
 
 
 # Fetch the runs
-mlflow.set_tracking_uri(mlflow_tracking_uri)
-os.environ["MLFLOW_TRACKING_USERNAME"] = mlflow_username
-os.environ["MLFLOW_TRACKING_PASSWORD"] = mlflow_password
 baseline_run, candidate_run = fetch_runs(
     mlflow_tracking_uri,
     mlflow_username,
