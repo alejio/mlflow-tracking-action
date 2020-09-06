@@ -8,6 +8,7 @@ MLflow Tracking [homepage](https://www.mlflow.org/docs/latest/tracking.html/)
   - [Example](#example)
   - [Inputs](#inputs)
     - [Mandatory Inputs](#mandatory-inputs)
+    - [Optional Inputs](#optional-inputs)
   - [Outputs](#outputs)
 - [Features of This Action](#features-of-this-action)
   - [Querying Model Runs](#querying-model-runs)
@@ -42,11 +43,15 @@ jobs:
 #### Mandatory Inputs
 
   1. `MLFLOW_TRACKING_URI`: The tracking URI of your MLflow remote server, including username and password. Example "http://ec2-1-2-345-678.eu-west-2.compute.amazonaws.com".
-  2. `MLFLOW_TRACKING_USERNAME`: Username for MLflow server authentication.
-  3. `MLFLOW_TRACKING_PASSWORD`: Password for MLflow server authentication.
-  4. `EXPERIMENT_ID`:  The MLflow experiment_id against which relevant runs were executed.
-  5. `BASELINE_RUN_QUERY`: Baseline run query string for using in `mlflow.search_runs` `filter_string` param.
-  6. `CANDIDATE_RUN_QUERY`: Candidate run query string for using in `mlflow.search_runs` `filter_string` param.
+  2. `EXPERIMENT_ID`:  The MLflow experiment_id against which relevant runs were executed.
+  3. `BASELINE_RUN_QUERY`: Baseline run query string for using in `mlflow.search_runs` `filter_string` param.
+  4. `CANDIDATE_RUN_QUERY`: Candidate run query string for using in `mlflow.search_runs` `filter_string` param.
+
+#### Optional Inputs
+
+  1. `MLFLOW_TRACKING_USERNAME`: Username for MLflow server authentication.
+  2. `MLFLOW_TRACKING_PASSWORD`: Password for MLflow server authentication.
+  3. `DEBUG`: Setting this variable to any value will turn debug mode on.
 
 ### Outputs
 
