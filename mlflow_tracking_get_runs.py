@@ -20,9 +20,12 @@ candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")
+logging.debug(f"uname: {os.getenv('INPUT_MLFLOW_TRACKING_USERNAME')}")
+logging.debug(f"pswd: {os.getenv('INPUT_MLFLOW_TRACKING_PASSWORD')}")
 
 
 # Validate inputs
+assert isinstance(mlflow_tracking_uri, str), "tracking_uri must be valid"
 assert isinstance(experiment_id, str), "experiment_id must be a string"
 assert isinstance(baseline_run_query, str), "run query must be a string"
 assert isinstance(candidate_run_query, str), "run query must be a string"
