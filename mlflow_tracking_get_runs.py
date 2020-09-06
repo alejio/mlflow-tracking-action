@@ -16,19 +16,12 @@ mlflow_tracking_uri = os.getenv("INPUT_MLFLOW_TRACKING_URI")
 experiment_id = os.getenv("INPUT_EXPERIMENT_ID")
 baseline_run_query = os.getenv("INPUT_BASELINE_RUN_QUERY")
 candidate_run_query = os.getenv("INPUT_CANDIDATE_RUN_QUERY")
-os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv(
-    "INPUT_MLFLOW_TRACKING_USERNAME"
-)
-os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv(
-    "INPUT_MLFLOW_TRACKING_PASSWORD"
-)
+mlflow_username = os.getenv("INPUT_MLFLOW_TRACKING_USERNAME")
+mlflow_password = os.getenv("INPUT_MLFLOW_TRACKING_PASSWORD")
 
 logging.debug(f"EXPERIMENT_ID: {experiment_id}")
 logging.debug(f"BASELINE_RUN_QUERY: {baseline_run_query}")
 logging.debug(f"CANDIDATE_RUN_QUERY: {candidate_run_query}")
-logging.debug(f"uname: {os.getenv('MLFLOW_TRACKING_USERNAME')}")
-logging.debug(f"pswd: {os.getenv('MLFLOW_TRACKING_PASSWORD')}")
-
 
 # Validate inputs
 assert isinstance(mlflow_tracking_uri, str), "tracking_uri must be valid"
@@ -40,11 +33,16 @@ assert isinstance(candidate_run_query, str), "run query must be a string"
 # Fetch the runs
 def fetch_runs(
     tracking_uri: str,
+    username: str,
+    password: str,
     experiment_id: str,
     baseline_query: str,
     candidate_query: str,
 ) -> Tuple[Any, Any]:
     mlflow.set_tracking_uri(tracking_uri)
+    os.environ["MLFLOW_TRACKING_USERNAME"] = username
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = password
+    print(os.getenv("MLFLOW_TRACKING_USERNAME"))
     baseline_run = mlflow.search_runs(
         experiment_ids=[experiment_id], filter_string=baseline_query
     )
@@ -60,7 +58,12 @@ def fetch_runs(
 
 # Fetch the runs
 baseline_run, candidate_run = fetch_runs(
-    mlflow_tracking_uri, experiment_id, baseline_run_query, candidate_run_query
+    mlflow_tracking_uri,
+    mlflow_username,
+    mlflow_password,
+    experiment_id,
+    baseline_run_query,
+    candidate_run_query,
 )
 
 
