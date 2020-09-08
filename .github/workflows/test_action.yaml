@@ -19,7 +19,7 @@ jobs:
       - name: test outputs
         run: |
           python -c "assert '${BOOL_COMPLETE}' == 'True'"
-          echo ${{ steps.outputs.mlflow.EXPERIMENT_ID }}
+          echo ${EXPERIMENT_ID}
           echo ${{ steps.outputs.mlflow.BASELINE_TRAIN_ACCURACY }}
           echo ${{ steps.outputs.mlflow.BASELINE_TEST_ACCURACY }}
           echo ${{ steps.outputs.mlflow.BASELINE_ARTIFACT_URI }}
@@ -27,6 +27,8 @@ jobs:
           echo ${{ steps.outputs.mlflow.CANDIDATE_ARTIFACT_URI }}
         env:
           BOOL_COMPLETE: ${{ steps.mlflow.outputs.BOOL_COMPLETE }}
+          EXPERIMENT_ID: ${{ steps.outputs.mlflow.EXPERIMENT_ID }}
+          
   pre-build-image:
     runs-on: ubuntu-latest
     steps:
