@@ -20,14 +20,19 @@ jobs:
         run: |
           python -c "assert '${BOOL_COMPLETE}' == 'True'"
           echo ${EXPERIMENT_ID}
-          echo ${{ steps.outputs.mlflow.BASELINE_TRAIN_ACCURACY }}
-          echo ${{ steps.outputs.mlflow.BASELINE_TEST_ACCURACY }}
-          echo ${{ steps.outputs.mlflow.BASELINE_ARTIFACT_URI }}
-          echo ${{ steps.outputs.mlflow.CANDIDATE_TRAIN_ACCURACY }}
-          echo ${{ steps.outputs.mlflow.CANDIDATE_ARTIFACT_URI }}
+          echo ${BASELINE_TRAIN_ACCURACY}
+          echo ${BASELINE_TEST_ACCURACY}
+          echo ${BASELINE_ARTIFACT_URI}
+          echo ${CANDIDATE_TRAIN_ACCURACY}
+          echo ${CANDIDATE_ARTIFACT_URI }
         env:
           BOOL_COMPLETE: ${{ steps.mlflow.outputs.BOOL_COMPLETE }}
           EXPERIMENT_ID: ${{ steps.mlflow.outputs.EXPERIMENT_ID }}
+          BASELINE_TRAIN_ACCURACY: ${{ steps.outputs.mlflow.BASELINE_TRAIN_ACCURACY }}
+          BASELINE_TEST_ACCURACY: ${{ steps.outputs.mlflow.BASELINE_TEST_ACCURACY }}
+          BASELINE_ARTIFACT_URI: ${{ steps.outputs.mlflow.BASELINE_ARTIFACT_URI }}
+          CANDIDATE_TRAIN_ACCURACY: ${{ steps.outputs.mlflow.CANDIDATE_TRAIN_ACCURACY }}
+          CANDIDATE_ARTIFACT_URI: ${{ steps.outputs.mlflow.CANDIDATE_ARTIFACT_URI }}
           
   pre-build-image:
     runs-on: ubuntu-latest
