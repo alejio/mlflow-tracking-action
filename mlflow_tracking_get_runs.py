@@ -73,6 +73,7 @@ print(
     f"::set-output name=BOOL_COMPLETE::{True if (baseline_run is not None) and (candidate_run is not None) else False}"
 )
 print(f"::set-output name=EXPERIMENT_ID::{experiment_id}")
+print(f'::set-output name=BASELINE_RUNID::{baseline_run["run_id"]}')
 print(
     f'::set-output name=BASELINE_TRAIN_ACCURACY::{baseline_run["metrics.training accuracy"]}'
 )
@@ -82,6 +83,7 @@ print(
 print(
     f'::set-output name=BASELINE_ARTIFACT_URI::{baseline_run["artifact_uri"]}'
 )
+print(f'::set-output name=BASELINE_RUNID::{candidate_run["run_id"]}')
 print(
     f'::set-output name=CANDIDATE_TRAIN_ACCURACY::{candidate_run["metrics.training accuracy"]}'
 )

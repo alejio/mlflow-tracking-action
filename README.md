@@ -58,12 +58,15 @@ jobs:
 You can reference the outputs of an action using [expression syntax](https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions).
 
 1. `BOOL_COMPLETE`: True if both runs were fetched successfully.
-2. `BASELINE_TRAIN_ACCURACY`: Training accuracy of baseline run.
-3. `BASELINE_TEST_ACCURACY`: Training accuracy of baseline run.
-4. `BASELINE_ARTIFACT_URI`: Artifact URI for baseline run.
-5. `CANDIDATE_TRAIN_ACCURACY`: Training accuracy of baseline run.
-6. `CANDIDATE_TEST_ACCURACY`: Training accuracy of baseline run.
-7. `CANDIDATE_ARTIFACT_URI`: Artifact URI for baseline run.
+2. `EXPERIMENT_ID`: Queried MLflow experiment_id.
+3. `BASELINE_RUNID`: MLflow Run ID of baseline run.
+4. `BASELINE_TRAIN_ACCURACY`: Training accuracy of baseline run.
+5. `BASELINE_TEST_ACCURACY`: Training accuracy of baseline run.
+6. `BASELINE_ARTIFACT_URI`: Artifact URI for baseline run.
+7. `CANDIDATE_RUNID`: MLflow Run ID of candidate run.
+8. `CANDIDATE_TRAIN_ACCURACY`: Training accuracy of candidate run.
+9. `CANDIDATE_TEST_ACCURACY`: Training accuracy of candidate run.
+10. `CANDIDATE_ARTIFACT_URI`: Artifact URI for candidate run.
 
 ## Features of This Action
 

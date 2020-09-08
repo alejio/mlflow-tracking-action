@@ -29,12 +29,16 @@ outputs:
     description: True if both runs were fetched successfully.
   EXPERIMENT_ID:
     description: Queried MLflow experiment_id.
+  BASELINE_RUNID:
+    description: MLflow Run ID of baseline run.
   BASELINE_TRAIN_ACCURACY:
     description: Training accuracy of baseline run.
   BASELINE_TEST_ACCURACY:
     description: Training accuracy of baseline run.
   BASELINE_ARTIFACT_URI:
     description: Artifact URI for baseline run.
+  CANDIDATE_RUNID:
+    description: MLflow Run ID of candidate run.
   CANDIDATE_TRAIN_ACCURACY:
     description: Training accuracy of baseline run.
   CANDIDATE_TEST_ACCURACY:
