@@ -83,7 +83,7 @@ print(
 print(
     f'::set-output name=BASELINE_ARTIFACT_URI::{baseline_run["artifact_uri"]}'
 )
-print(f'::set-output name=BASELINE_RUNID::{candidate_run["run_id"]}')
+print(f'::set-output name=CANDIDATE_RUNID::{candidate_run["run_id"]}')
 print(
     f'::set-output name=CANDIDATE_TRAIN_ACCURACY::{candidate_run["metrics.training accuracy"]}'
 )

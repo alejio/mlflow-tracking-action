@@ -27,7 +27,7 @@ jobs:
           echo ${CANDIDATE_RUNID}
           echo ${CANDIDATE_TRAIN_ACCURACY}
           echo ${CANDIDATE_TEST_ACCURACY}
-          echo ${CANDIDATE_ARTIFACT_URI }
+          echo ${CANDIDATE_ARTIFACT_URI}
         env:
           BOOL_COMPLETE: ${{ steps.mlflow.outputs.BOOL_COMPLETE }}
           EXPERIMENT_ID: ${{ steps.mlflow.outputs.EXPERIMENT_ID }}
