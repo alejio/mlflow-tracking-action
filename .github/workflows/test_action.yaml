@@ -27,7 +27,7 @@ jobs:
           echo ${{ steps.outputs.mlflow.CANDIDATE_ARTIFACT_URI }}
         env:
           BOOL_COMPLETE: ${{ steps.mlflow.outputs.BOOL_COMPLETE }}
-          EXPERIMENT_ID: ${{ steps.outputs.mlflow.EXPERIMENT_ID }}
+          EXPERIMENT_ID: ${{ steps.mlflow.outputs.EXPERIMENT_ID }}
           
   pre-build-image:
     runs-on: ubuntu-latest
